@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donation Hub : Find & Donate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/ec/Red_blood_drop.svg" type="image/svg+xml">
+</head>
+<body>
+    <div id="app">
+        <div id="preloader">
+            <div class="spinner"></div>
+            <div class="loading-text">Initializing BloodLink Pro...</div>
+        </div>
+
+        <section id="login-page" class="page active">
+            <div class="login-container">
+                <div class="login-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Red_blood_drop.svg" alt="BloodLink Logo" class="logo">
+                    <h1>Welcome to BloodLink Pro</h1>
+                    <p>Your Advanced Healthcare & Donation Network</p>
+                </div>
+                <div class="login-form-wrapper">
+                    <form id="login-form">
+                        <div class="input-group">
+                            <label for="username"><i class="fas fa-user-circle icon-left"></i> User ID</label>
+                            <input type="text" id="username" placeholder="Enter your ID or Email" required autocomplete="username">
+                        </div>
+                        <div class="input-group">
+                            <label for="password"><i class="fas fa-key icon-left"></i> Access Key</label>
+                            <input type="password" id="password" placeholder="Enter your password" required autocomplete="current-password">
+                        </div>
+                        <div class="user-type-selector">
+                            <label>Login As:</label>
+                            <div class="radio-group">
+                                <input type="radio" id="doctor" name="user_type" value="doctor" checked>
+                                <label for="doctor"><i class="fas fa-user-md icon-right-margin"></i> Doctor</label>
+                                <input type="radio" id="camp_owner" name="user_type" value="camp_owner">
+                                <label for="camp_owner"><i class="fas fa-handshake icon-right-margin"></i> Camp Owner</label>
+                                <input type="radio" id="customer" name="user_type" value="customer">
+                                <label for="customer"><i class="fas fa-users icon-right-margin"></i> Donor/Recipient</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Initiate Secure Login</button>
+                    </form>
+                    <div class="login-footer">
+                        <p class="customer-only-footer">New Donor/Recipient? <a href="#" id="show-signup">Register Now</a></p>
+                        <p class="small-text doctor-camp-owner-info">For medical professionals & camp organizers: use your pre-assigned credentials.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup-page" class="page">
+            <div class="signup-container">
+                <div class="signup-header">
+                    <h2>Donor/Recipient Registration</h2>
+                    <p>Join BloodLink Pro to save lives.</p>
+                </div>
+                <div class="signup-form-wrapper">
+                    <form id="signup-form">
+                        <div class="input-group">
+                            <label for="signup-name"><i class="fas fa-user icon-left"></i> Full Name</label>
+                            <input type="text" id="signup-name" placeholder="Your Full Name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-email"><i class="fas fa-envelope icon-left"></i> Email Address</label>
+                            <input type="email" id="signup-email" placeholder="Valid Email (Your User ID)" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-password"><i class="fas fa-lock icon-left"></i> Create Access Key</label>
+                            <input type="password" id="signup-password" placeholder="Min 6 characters" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-confirm-password"><i class="fas fa-lock-open icon-left"></i> Confirm Access Key</label>
+                            <input type="password" id="signup-confirm-password" placeholder="Re-enter password" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-phone"><i class="fas fa-phone icon-left"></i> Phone Number</label>
+                            <input type="tel" id="signup-phone" placeholder="+91-XXXXXXXXXX" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="signup-blood-group"><i class="fas fa-tint icon-left"></i> Blood Group</label>
+                            <select id="signup-blood-group" required>
+                                <option value="">Select Blood Group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Complete Registration</button>
+                    </form>
+                    <div class="signup-footer">
+                        <p>Already have an account? <a href="#" id="show-login">Login Here</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard-page" class="page">
+            <header class="navbar">
+                <div class="navbar-brand">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Red_blood_drop.svg" alt="Logo" class="logo-small">
+                    <span>BloodLink Pro</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#" class="nav-link active" data-target="dashboard-home">Dashboard</a></li>
+                        <li class="doctor-only"><a href="#" class="nav-link" data-target="doctor-notifications">Urgent Alerts</a></li>
+                        <li class="camp-owner-only"><a href="#" class="nav-link" data-target="camp-management">Camp Ops</a></li>
+                        <li class="customer-only"><a href="#" class="nav-link" data-target="blood-camps">Donation Camps</a></li>
+                        <li class="customer-only"><a href="#" class="nav-link" data-target="blood-requests">Urgent Needs</a></li>
+                        <li><a href="#" class="nav-link" id="logout-btn">Logout</a></li>
+                    </ul>
+                </nav>
+                <div class="user-profile">
+                    <span id="welcome-user">Welcome, User!</span>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <aside class="sidebar">
+                    <div class="user-info">
+                        <div class="avatar"><i class="fas fa-user-circle"></i></div>
+                        <h3 id="sidebar-username">Guest User</h3>
+                        <p id="sidebar-user-role">Role: Unknown</p>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul>
+                            <li><a href="#" class="sidebar-link active" data-target="dashboard-home"><i class="fas fa-chart-line"></i> Overview</a></li>
+                            <li class="doctor-only"><a href="#" class="sidebar-link" data-target="doctor-notifications"><i class="fas fa-bell"></i> Urgent Alerts</a></li>
+                            <li class="camp-owner-only"><a href="#" class="sidebar-link" data-target="camp-management"><i class="fas fa-calendar-alt"></i> Camp Operations</a></li>
+                            <li class="customer-only"><a href="#" class="sidebar-link" data-target="blood-camps"><i class="fas fa-hand-holding-medical"></i> Donation Camps</a></li>
+                            <li class="customer-only"><a href="#" class="sidebar-link" data-target="blood-requests"><i class="fas fa-tint"></i> Urgent Needs</a></li>
+                            <li><a href="#" class="sidebar-link" data-target="settings"><i class="fas fa-cog"></i> Settings</a></li>
+                            <li><a href="#" class="sidebar-link" id="sidebar-logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <section id="dashboard-home" class="dashboard-section active">
+                    <div class="section-header">
+                        <h2>System Overview</h2>
+                        <span class="status-indicator online">Online</span>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Registered Users</h3>
+                            <p class="stat-value" id="total-users">0</p>
+                            <span class="stat-trend">Current active users</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Active Blood Camps</h3>
+                            <p class="stat-value" id="active-camps">0</p>
+                            <span class="stat-trend">Upcoming camps</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Urgent Requests</h3>
+                            <p class="stat-value urgent" id="urgent-requests">0 Critical</p>
+                            <span class="stat-trend">Needs immediate attention</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Lives Impacted</h3>
+                            <p class="stat-value" id="lives-impacted">0</p>
+                            <span class="stat-trend">Through donations</span>
+                        </div>
+                    </div>
+                    <div class="recent-activity">
+                        <h3>Recent System Logs</h3>
+                        <ul class="activity-list" id="system-logs">
+                            <li class="no-data-message">No recent activity.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="doctor-notifications" class="dashboard-section doctor-only">
+                    <div class="section-header">
+                        <h2>Urgent Blood Requirements (For Doctors)</h2>
+                        <button class="btn success-btn" id="open-blood-request-modal">Post New Requirement</button>
+                    </div>
+                    <div class="notification-list" id="doctor-urgent-requests">
+                        </div>
+                    <p class="no-data-message" id="no-urgent-requests">No urgent blood requests posted by you yet. Post one now!</p>
+                </section>
+
+                <section id="camp-management" class="dashboard-section camp-owner-only">
+                    <div class="section-header">
+                        <h2>Blood Camp Management (For Camp Owners)</h2>
+                        <button class="btn primary-btn" id="open-camp-modal">Register New Camp</button>
+                    </div>
+                    <div class="camp-list" id="camp-owner-camps">
+                        </div>
+                    <p class="no-data-message" id="no-registered-camps">No blood donation camps registered by you yet. Add one!</p>
+                </section>
+
+                <section id="blood-camps" class="dashboard-section customer-only">
+                    <div class="section-header">
+                        <h2>Upcoming Blood Donation Camps (For Donors/Recipients)</h2>
+                        <div class="filter-options">
+                            <label for="camp-filter">Filter by:</label>
+                            <select id="camp-filter">
+                                <option value="all">All Camps</option>
+                                <option value="today">Today</option>
+                                <option value="this-week">This Week</option>
+                                <option value="next-month">Next Month</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="camp-display-grid" id="customer-blood-camps">
+                        </div>
+                    <p class="no-data-message" id="no-upcoming-camps">No upcoming blood donation camps found.</p>
+                </section>
+
+                <section id="blood-requests" class="dashboard-section customer-only">
+                    <div class="section-header">
+                        <h2>Live Urgent Blood Needs (For Donors/Recipients)</h2>
+                        <div class="filter-options">
+                            <label for="request-blood-group-filter">Blood Group:</label>
+                            <select id="request-blood-group-filter">
+                                <option value="all">All</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="request-display-list" id="customer-blood-requests">
+                        </div>
+                    <p class="no-data-message" id="no-live-requests">No urgent blood requirements currently active.</p>
+                </section>
+
+                <section id="settings" class="dashboard-section">
+                    <div class="section-header">
+                        <h2>User Settings</h2>
+                    </div>
+                    <div class="settings-form-wrapper">
+                        <form id="profile-settings-form">
+                            <div class="input-group">
+                                <label for="setting-name"><i class="fas fa-user icon-left"></i> Name</label>
+                                <input type="text" id="setting-name" value="User Name">
+                            </div>
+                            <div class="input-group">
+                                <label for="setting-email"><i class="fas fa-envelope icon-left"></i> Email</label>
+                                <input type="email" id="setting-email" value="user@example.com" disabled>
+                            </div>
+                            <div class="input-group">
+                                <label for="setting-phone"><i class="fas fa-phone icon-left"></i> Phone</label>
+                                <input type="tel" id="setting-phone" value="+91 XXXXXXXXXX">
+                            </div>
+                            <button type="submit" class="btn primary-btn">Update Profile</button>
+                        </form>
+                        <form id="password-settings-form">
+                            <h3>Change Password</h3>
+                            <div class="input-group">
+                                <label for="old-password"><i class="fas fa-lock icon-left"></i> Old Password</label>
+                                <input type="password" id="old-password">
+                            </div>
+                            <div class="input-group">
+                                <label for="new-password"><i class="fas fa-lock-open icon-left"></i> New Password</label>
+                                <input type="password" id="new-password">
+                            </div>
+                            <div class="input-group">
+                                <label for="confirm-new-password"><i class="fas fa-key icon-left"></i> Confirm New Password</label>
+                                <input type="password" id="confirm-new-password">
+                            </div>
+                            <button type="submit" class="btn danger-btn">Change Password</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </section>
+
+        <div id="blood-request-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Post Urgent Blood Requirement</h3>
+                <form id="post-blood-request-form">
+                    <div class="input-group">
+                        <label for="hospital-name">Hospital Name</label>
+                        <input type="text" id="hospital-name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="patient-details">Patient Details (Optional)</label>
+                        <input type="text" id="patient-details" placeholder="e.g., Patient ID, condition">
+                    </div>
+                    <div class="input-group">
+                        <label for="blood-group">Required Blood Group</label>
+                        <select id="blood-group" required>
+                            <option value="">Select Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="units-required">Units Required</label>
+                        <input type="number" id="units-required" min="1" value="1" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="contact-person">Contact Person</label>
+                        <input type="text" id="contact-person" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="contact-number">Contact Number</label>
+                        <input type="tel" id="contact-number" placeholder="+91-XXXXXXXXXX" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="urgency-level">Urgency Level</label>
+                        <select id="urgency-level" required>
+                            <option value="critical">Critical (Immediate)</option>
+                            <option value="high">High (Within 6 hours)</option>
+                            <option value="medium">Medium (Within 24 hours)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Post Requirement</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="camp-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Register New Blood Donation Camp</h3>
+                <form id="register-camp-form">
+                    <div class="input-group">
+                        <label for="camp-name">Camp Name</label>
+                        <input type="text" id="camp-name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="camp-organizer">Organizer</label>
+                        <input type="text" id="camp-organizer" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="camp-date">Date</label>
+                        <input type="date" id="camp-date" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="camp-time">Time</label>
+                        <input type="time" id="camp-time" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="camp-location">Location (Kolhapur)</label>
+                        <input type="text" id="camp-location" placeholder="Full address with landmark" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="camp-contact">Contact Info</label>
+                        <input type="tel" id="camp-contact" placeholder="+91-XXXXXXXXXX" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="camp-description">Description</label>
+                        <textarea id="camp-description" rows="3" placeholder="Any special instructions or info"></textarea>
+                    </div>
+                    <button type="submit" class="btn primary-btn">Register Camp</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="notification-toast" class="notification-toast"></div>
+
+    </div>
+
+    <script src="https://kit.fontawesome.com/6f31ebd664.js" crossorigin="anonymous"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
